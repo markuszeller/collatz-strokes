@@ -1,6 +1,6 @@
 int[] alphas = { 4, 8, 16, 32, 64, 128, 255 }; // 4, 8, 16, 32, 64, 128, 255
 int alpha = 0;
-int alphaIndex = 0;
+int alphaIndex = -1;
 int it = 1;
 int loopStop;
 int progress = 0;
@@ -13,7 +13,7 @@ public void setup() {
   background(2);
   noFill();
   
-  loopStop = (int) sqrt((width * width) + (height * height));
+  loopStop = (int) sqrt((width * width) + (height * height)); //<>//
   alpha = getNextAlpha();
 }
 
@@ -72,5 +72,5 @@ public int collatz(int num) {
 }
 
 int getNextAlpha() {
-  return (this.alphaIndex++ < this.alphas.length - 1) ? this.alphas[alphaIndex] : -1;
+  return (this.alphaIndex++ < this.alphas.length - 1) ? this.alphas[alphaIndex] : -1; //<>//
 }
