@@ -59,8 +59,5 @@ public void draw() {
 }
 
 public int collatz(int num) {
-  if(num % 2 == 0) {
-    return num / 2;
-  }
-  return (num * 3 + 1);
+  return (num % 2 == 0) ? num / 2 : num * 3 + 1; 
 }
