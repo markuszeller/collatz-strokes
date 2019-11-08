@@ -1,4 +1,6 @@
-int alpha = 32; // 4, 8, 16, 32, 64, 128, 255
+int[] alphas = { 4, 8, 16, 32, 64, 128, 255 }; // 4, 8, 16, 32, 64, 128, 255
+int alpha = 0;
+int alphaIndex = 0;
 int it = 1;
 int loopStop;
 int progress = 0;
@@ -11,7 +13,8 @@ public void setup() {
   background(2);
   noFill();
   
-  loopStop = (int) sqrt((width * width) + (height * height)) * 2;
+  loopStop = (int) sqrt((width * width) + (height * height));
+  alpha = getNextAlpha();
 }
 
 public void draw() {
@@ -52,12 +55,22 @@ public void draw() {
   }
   
   if(it > loopStop) {
-    noLoop();
-    save("data/save.png");
-    println("Done");
+    save("data/save_"+ nf(alpha, 3) + ".png");
+    alpha = getNextAlpha();
+    if(alpha == -1) {
+      noLoop();
+      println("Done");
+      return;
+    }
+    background(2);
+    it = 1;
   }
 }
 
 public int collatz(int num) {
   return (num % 2 == 0) ? num / 2 : num * 3 + 1; 
+}
+
+int getNextAlpha() {
+  return (this.alphaIndex++ < this.alphas.length - 1) ? this.alphas[alphaIndex] : -1;
 }
