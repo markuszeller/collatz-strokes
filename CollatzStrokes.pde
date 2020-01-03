@@ -9,7 +9,8 @@ float degStep = PI/4;
 public void setup() {
   // size(851, 315); // facebook cover size
   // size(1600, 800); // deviant art cover size
-  size(1080, 1080); // insta image size
+  // size(1080, 1080); // insta image size
+  size(1200, 480); // twitch image size
   background(2);
   noFill();
   
